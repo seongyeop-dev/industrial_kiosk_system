@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4458443000004739756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 259962768088046184}
+  - component: {fileID: 6862252377050742276}
+  - component: {fileID: 207986789810492556}
+  m_Layer: 5
+  m_Name: PageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &259962768088046184
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458443000004739756}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6862252377050742276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458443000004739756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2df3c7533b7ea4ba9f6cc1f0e9e27e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::scr_PageRouter
+  pageHome: {fileID: 0}
+  pageDashboard: {fileID: 0}
+  pageOrder: {fileID: 0}
+  pageStatus: {fileID: 0}
+  pageAlarm: {fileID: 0}
+  pageSystemLog: {fileID: 0}
+  mainHome: {fileID: 0}
+  topBar: {fileID: 0}
+  sideMenu: {fileID: 0}
+  bottomBar: {fileID: 0}
+  mainFrame: {fileID: 0}
+  btnDashboard: {fileID: 0}
+  btnOrder: {fileID: 0}
+  btnStatus: {fileID: 0}
+  btnAlarm: {fileID: 0}
+  btnSystemLog: {fileID: 0}
+  btnHome: {fileID: 0}
+  btnHomeDashboard: {fileID: 0}
+  btnHomeOrder: {fileID: 0}
+  btnHomeStatus: {fileID: 0}
+  btnHomeAlarm: {fileID: 0}
+  btnHomeSystemLog: {fileID: 0}
+  normalButtonColor: {r: 0.27, g: 0.47, b: 0.62, a: 1}
+  selectedButtonColor: {r: 0.08, g: 0.26, b: 0.49, a: 1}
+  txtLastAction: {fileID: 0}
+  defaultPage: {fileID: 0}
+  actionLogger: {fileID: 207986789810492556}
+--- !u!114 &207986789810492556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458443000004739756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b6d3df1c63fe94eaa00b23edf38a6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::scr_UIActionLogger
+  txtLastAction: {fileID: 0}

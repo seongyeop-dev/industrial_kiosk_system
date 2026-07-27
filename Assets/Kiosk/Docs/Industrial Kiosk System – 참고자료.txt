@@ -1,0 +1,101 @@
+﻿
+
+
+*****이 프로젝트는 산업용 시스템처럼 동작하도록 설계해보았습니다.
+특히 UI와 데이터 처리 로직을 분리하여 유지보수성과 확장성을 고려했고,
+로그 시스템을 최적화하여 성능 안정성을 확보했습니다.
+또한 주문 데이터와 로그를 파일로 저장하여 실제 운영 시스템과 유사한 흐름을 구현했습니다.*****
+
+1. 프로젝트 개요
+프로젝트명: 키오스크 만들기 => Industrial Kiosk System (산업용 키오스크 시스템)
+주요 기능 요구사항: 
+영수증 출력(이미지파일), 주문서 출력(텍스트) 
+빌드해서 실행파일과 소스를 압축하여 제출 
+Application.persistentDataPath - 출력
+
+2. 프로젝트 목표
+Unity 기반으로 산업용 키오스크 UI를 구현
+주문 관리, 상태 표시, 로그 기록 및 파일 저장 기능을 통합한 시스템을 개발
+산업 현장에서 사용할 수 있는 UI 구조 설계
+주문 / 상태 / 로그 / 알람 기능 통합
+데이터 저장 및 출력 시스템 구현
+실제 시스템과 유사한 동작 흐름 구성
+
+3. 시스템 구성
+Home (메인 화면)
+Dashboard (통합 모니터링)
+Order (주문 관리)
+Status (시스템 상태)
+Alarm (이상 알림)
+System Log (기록 관리)
+
+4. 주요 기능
+Order 기능: 주문 추가 / 수정 / 삭제, 주문번호 자동 생성 및 중복 방지, 입력 검증 (제품명 / 수량 / 날짜), 상태(Status) 관리 (Ready / Wait / Done)
+저장 기능: 주문 데이터 TXT 저장, 영수증 PNG 저장, 로그 JSON 저장, 로그 CSV Export
+Log 기능: 시스템 로그 자동 기록, 카테고리 기반 필터링, Summary / Detail 분리 구조
+Alarm 기능: 알람 생성 및 삭제, 알람 개수 관리
+Dashboard 기능: 주문 요약 표시, 상태 표시, 로그 / 알람 표시, 실시간 정보 갱신
+
+5. 시스템 구조
+scr_PageOrderController / scr_PageLogController / scr_PageRouter / scr_OrderController / scr_ReceiptCapture
+Data: OrderData / LogData
+File: TXT 저장 (Order) / PNG 저장 (Receipt) / JSON 저장 (Log) / CSV Export (Log)
+
+6. 구조 특징
+UI와 데이터 로직 분리
+Controller 중심으로 코드 작성
+파일 저장 기능 모듈화
+확장 가능한 구조로 추후 로봇시뮬레이터 연동 가능성 두고 로그 기능추가
+
+7. 저장 구조
+기준 경로
+Application.persistentDataPath 경로에 KioskData 폴더 생성
+Orders: orders.txt, OrderSheets, Receipts
+Logs: system_log.json, system_log_export_YYYYMMDD_HHMMSS.csv
+
+파일 규칙
+주문 데이터 → orders.txt
+주문서 → OrderSheet_{OrderNo}.txt
+영수증 → Receipt_{OrderNo}.png
+로그 → JSON 저장 + CSV Export
+
+8. UI 구조: Home Mode / Main_Home / Detail Mode / TopBar / SideMenu / MainFrame / BottomBar
+특징: Home / Detail 모드 분리, 공통 페이지 전환 구조, 버튼 상태 유지 및 하이라이트
+
+9. 사용 방법
+Order 페이지 -> 제품명 / 수량 입력 -> 상태 선택 -> Save 클릭 → 이후 자동화: 주문 생성 → TXT 저장 → PNG 저장
+
+수정 시 사용 방법: Row 선택 → Edit -> 수정 내용 재입력
+삭제 시 사용 방법: Delete 버튼 (해당 Row 삭제), Delete last 버튼 (마지막 Row 삭제)
+Log: 자동 기록, 필터 선택 가능 (All, Log, Alarm, Status, Order 버튼클릭 자동 분류), CSV Export 버튼 시 엑셀 추출
+Row 클릭 시 상세 확인
+
+10. 테스트
+Order 추가 / 수정 / 삭제 정상
+TXT 파일 생성 정상
+PNG 파일 생성 정상
+Log 기록 정상
+JSON 저장 정상
+CSV Export 정상
+Dashboard 실시간 표시 정상
+Alarm 기능 정상
+
+11. 핵심 기술
+Page Router 기반 구조
+데이터 관리 시스템: TXT / JSON / CSV 기반 저장, 자동 저장, Order / Log / Alarm 분리 관리
+실시간 시스템: 메인 Home버튼 => Dashboard 실시간 갱신, LastAction / Status 반영
+코드 설계: UI / Data, Controller 구조, Prefab 기반 동적 리스트 생성
+데이터 영속성: 프로그램 종료 후에도 이전 데이터 유지, 파일 기반 저장 구조
+
+12. 성능 및 최적화
+로그 시스템 경량화 적용: Navigation 로그 제거, 클릭 로그 제거 => 데이터 변화 로그만 유지
+로그 개수 제한: UI 표시: 15개, 저장/메모리: 30개
+UI 최적화: Log Row 부분 갱신 방식 적용, 불필요한 전체 Refresh 제거, 시간 갱신 최적화 (Update → 1초 주기 갱신 방식 변경)
+
+13. 결론
+Unity 기반 산업용 키오스크 시스템을 설계하고
+UI–데이터 분리 구조와 로그 시스템을 구현한 프로젝트
+UI / 데이터 / 저장 구조 분리
+파일 기반 데이터 영속성 구현
+로그 시스템 최적화 (불필요 로그 제거)
+실시간 Dashboard 시스템 구축
