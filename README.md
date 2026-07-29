@@ -1,252 +1,238 @@
 # Industrial Kiosk System
 
-Unity와 C#으로 구현한 주문·상태·알람·로그 통합 산업용 키오스크 시스템입니다.
+> Unity 기반 주문·상태·알람·로그 통합 관리 키오스크
 
 <p align="center">
-  <img src="docs/images/02-dashboard.png"
-       alt="Industrial Kiosk System Dashboard"
-       width="100%">
+  <img src="docs/images/overview/대표-대시보드.png" alt="산업용 키오스크 대표 대시보드" width="100%">
 </p>
+
+## 프로젝트 정보
+
+| 항목 | 내용 |
+|---|---|
+| 개발 형태 | 교육 과정 기반 개인 프로젝트 |
+| 구현 범위 | UI 설계, 주문·상태·알람·로그 기능, 로컬 파일 저장, Windows 빌드 |
+| 개발 환경 | Unity 6000.3.10f1, C# |
+| 실행 환경 | Windows Intel 64-bit |
+| 프로젝트 상태 | 주요 기능 구현 및 Windows Standalone 검증 완료 |
 
 ## 프로젝트 개요
 
-- **프로젝트명**: Industrial Kiosk System
-- **개발 환경**: Unity / C#
-- **목표**: 산업 현장에서 사용할 수 있는 주문·상태·알람·로그 통합 UI 구현
-- **핵심 방향**: UI와 데이터 처리 분리, 파일 기반 데이터 영속성, 반복 UI 프리팹화, 제출 환경에서도 안정적으로 동작하는 경량 구조
-- **빌드 결과**: Windows Intel 64-bit 빌드 성공
+산업 현장에서 주문, 시스템 상태, 알람과 작업 로그를 하나의 화면에서 관리하는 흐름을 구현한 Unity 기반 키오스크입니다. Home과 Dashboard에서 주요 정보를 요약하고, 각 Detail 화면에서 주문 CRUD, 상태 변경, 테스트 알람과 로그 조회를 처리합니다.
 
-단순한 화면 구성에 그치지 않고 주문 데이터와 시스템 로그를 로컬 파일로 저장하고, 앱 재실행 시 주문을 복원할 수 있도록 구현했습니다. 공통 UI는 `TopBar`, `SideMenu`, `MainFrame`, `BottomBar` 구조로 구성했습니다.
+주문과 로그는 `Application.persistentDataPath` 아래에 TXT·JSON·CSV 형식으로 저장하며, 선택한 주문은 영수증 UI를 PNG로 출력합니다. Windows Standalone 환경에서 데이터 저장과 재실행 후 주문 복원까지 확인했습니다.
 
-## 핵심 기능
+## 데모
 
-- Page Router 기반 Home / Detail 화면 전환
-- 주문 추가 / 수정 / 삭제 및 주문 상태 관리
-- 주문번호 자동 생성 및 중복 방지
-- 제품명 / 수량 / 날짜 입력 검증
-- TXT 기반 주문 저장 및 불러오기
-- 개별 주문서 TXT 출력
-- 주문 데이터를 반영한 영수증 PNG 저장
-- READY / RUNNING / ERROR 시스템 상태 변경 및 Dashboard 연동
-- 알람 생성, 목록 표시, 상세 조회, 전체 삭제
-- 주문 / 상태 / 알람 변경 중심의 시스템 로그
-- 로그 카테고리 필터, JSON 저장, CSV Export
-- Dashboard 및 Home 카드의 주문·상태·알람·로그 요약 표시
+### 산업용 키오스크 전체 기능 시연
 
-## 주요 화면
+Windows Standalone 환경에서 주문 등록·수정·삭제, 시스템 상태 변경, 테스트 알람, 로그 조회, TXT·JSON·CSV 데이터 저장, 영수증 PNG 출력과 재실행 후 주문 데이터 복원 흐름을 확인할 수 있습니다.
 
-### Home
+https://github.com/user-attachments/assets/6395205a-398a-4b4d-800e-a7682d0c1225
 
-주문 요약과 시스템 상태를 한눈에 확인하고, 최근 알람과 마지막 동작을 조회할 수 있는 시작 화면입니다.
+## 주요 기능
 
-<p align="center">
-  <img src="docs/images/01-home.png"
-       alt="Industrial Kiosk System Home"
-       width="95%">
-</p>
+### Home 및 Dashboard
 
-### Dashboard
+주문 수량, 시스템 상태, 최근 알람과 최근 로그를 요약합니다. Side Menu와 바로가기 버튼을 통해 각 Detail 화면으로 이동합니다.
 
-전체 주문 수와 상태별 수량, 현재 시스템 상태를 요약합니다. 최근 로그와 알람도 함께 표시합니다.
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/features/홈-화면.png" alt="홈 화면"></td>
+    <td width="50%"><img src="docs/images/overview/대표-대시보드.png" alt="대표 대시보드"></td>
+  </tr>
+  <tr>
+    <td align="center">Home</td>
+    <td align="center">Dashboard</td>
+  </tr>
+</table>
 
-<p align="center">
-  <img src="docs/images/02-dashboard.png"
-       alt="Industrial Kiosk System Dashboard"
-       width="95%">
-</p>
+### 주문 관리 및 영수증 출력
 
-### Order Management
+주문 추가·수정·삭제, 주문번호 자동 생성과 중복 방지, 제품명·수량·날짜 입력 검증을 처리합니다. 저장된 주문은 개별 TXT 주문서와 PNG 영수증으로 출력합니다.
 
-주문을 추가·수정·삭제하고 주문 상태를 관리합니다. 제품명, 수량, 날짜를 검증하며 주문번호를 자동 생성하고 중복을 방지합니다.
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/features/주문-관리.png" alt="주문 관리"></td>
+    <td width="50%"><img src="docs/images/features/영수증-PNG-출력.png" alt="영수증 PNG 출력"></td>
+  </tr>
+  <tr>
+    <td align="center">주문 관리</td>
+    <td align="center">영수증 PNG 출력</td>
+  </tr>
+</table>
 
-<p align="center">
-  <img src="docs/images/03-order.png"
-       alt="Industrial Kiosk System Order Management"
-       width="95%">
-</p>
+### 시스템 상태 및 테스트 알람
 
-### Receipt Export
+시스템 상태를 `READY`, `RUNNING`, `ERROR`로 변경하고 Home·Dashboard·Bottom Bar에 반영합니다. 알람 화면은 외부 설비 연동 전 UI 검증을 위한 테스트 알람 생성, 상세 조회와 전체 삭제 기능을 제공합니다.
 
-선택한 주문 데이터를 영수증 UI에 반영하고 주문별 PNG 파일로 저장합니다.
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/features/시스템-상태-관리.png" alt="시스템 상태 관리"></td>
+    <td width="50%"><img src="docs/images/features/테스트-알람-관리.png" alt="테스트 알람 관리"></td>
+  </tr>
+  <tr>
+    <td align="center">시스템 상태 관리</td>
+    <td align="center">테스트 알람 관리</td>
+  </tr>
+</table>
 
-<p align="center">
-  <img src="docs/images/04-receipt.png"
-       alt="Industrial Kiosk System Receipt Export"
-       width="95%">
-</p>
+### 시스템 로그
 
-### Alarm Management
-
-알람을 생성해 목록으로 표시하고 선택한 알람의 상세 내용을 조회합니다. 등록된 알람은 전체 삭제할 수 있습니다.
+주문·상태·알람 변경 이력을 최신순으로 표시하고 카테고리별로 필터링합니다. 로그는 JSON으로 저장하며 필요할 때 CSV 파일로 내보냅니다.
 
 <p align="center">
-  <img src="docs/images/05-alarm.png"
-       alt="Industrial Kiosk System Alarm Management"
-       width="95%">
+  <img src="docs/images/features/시스템-로그-관리.png" alt="시스템 로그 관리" width="95%">
 </p>
 
-### System Status
+## 시스템 구성
 
-시스템 상태를 READY, RUNNING, ERROR로 변경하고 변경 결과를 Dashboard와 공통 상태 영역에 연동합니다.
-
-<p align="center">
-  <img src="docs/images/06-status.png"
-       alt="Industrial Kiosk System Status"
-       width="95%">
-</p>
-
-### System Log
-
-주문, 상태, 알람 변경 이력을 기록하고 카테고리별로 필터링합니다. 로그는 JSON으로 저장하며 CSV 파일로 내보낼 수 있습니다.
-
-<p align="center">
-  <img src="docs/images/07-system-log.png"
-       alt="Industrial Kiosk System Log"
-       width="95%">
-</p>
-
-## 시스템 아키텍처
-
-```text
-UI Layer
-├─ scr_PageOrderController
-├─ scr_PageLogController
-└─ scr_PageRouter
-
-Controller Layer
-├─ scr_OrderController
-├─ scr_DashboardController
-├─ scr_StatusController
-├─ scr_AlarmController
-└─ scr_ReceiptCapture
-
-Data / File Layer
-├─ OrderData
-├─ LogData
-├─ scr_LogFileSave
-├─ NST_Json
-└─ NST_CSV
-
-UI Component Layer
-├─ scr_OrderListItemUI
-├─ scr_LogRowUI
-├─ scr_AlarmRowUI
-├─ scr_UIActionLogger
-├─ scr_BottomBarToggle
-└─ scr_TimeDisplay
+```mermaid
+flowchart LR
+    A[사용자 입력] --> B[scr_PageRouter]
+    B --> C[Page Controllers]
+    C --> D[Domain Controllers]
+    D --> E[Data Models]
+    D --> F[UI Row Prefabs]
+    E --> G[TXT / JSON / CSV]
+    D --> H[scr_ReceiptCapture]
+    H --> I[PNG]
 ```
 
-Page Router가 Home과 각 Detail 페이지의 전환 및 공통 네비게이션을 담당합니다. 화면 Controller, 데이터 및 파일 처리, 반복 Row UI의 책임을 나누어 주문·로그 데이터와 화면 표시가 분리되도록 구성했습니다.
+- `scr_PageRouter`: Home·Detail 화면 전환과 공통 네비게이션
+- Page Controllers: 화면 입력, 검증, 선택 상태와 UI 갱신
+- Domain Controllers: 주문·상태·알람·Dashboard 데이터 처리
+- Data/File Layer: TXT·JSON·CSV 저장과 재실행 복원
+- UI Components: 주문·알람·로그 Row와 공통 상태 표시
 
-## 데이터 저장 구조
+자세한 구성은 [시스템 아키텍처](docs/02-architecture.md)에서 확인할 수 있습니다.
 
-모든 런타임 데이터는 Unity가 운영체제별 쓰기 가능한 경로로 제공하는 `Application.persistentDataPath` 아래의 `KioskData`에 저장됩니다.
+## 데이터 흐름
 
-```text
-KioskData
-├─ Orders
-│  ├─ orders.txt
-│  ├─ OrderSheets
-│  │  └─ OrderSheet_{OrderNo}.txt
-│  └─ Receipts
-│     └─ Receipt_{OrderNo}.png
-└─ Logs
-   ├─ system_log.json
-   └─ system_log_export_YYYYMMDD_HHMMSS.csv
+```mermaid
+flowchart LR
+    A[입력] --> B[입력값 검증]
+    B --> C[주문 데이터 생성·수정]
+    C --> D[메모리 목록 갱신]
+    D --> E[orders.txt 저장]
+    D --> F[개별 주문서 TXT]
+    D --> G[영수증 PNG]
+    C --> H[시스템 로그]
+    H --> I[system_log.json]
+    H --> J[CSV Export]
+    D --> K[Home / Dashboard 갱신]
 ```
 
-Windows 환경에서는 일반적으로 다음 경로에 저장됩니다.
+런타임 데이터는 `Application.persistentDataPath/KioskData` 아래에 저장됩니다. 자세한 저장 구조와 처리 순서는 [데이터 흐름](docs/04-data-flow.md)에 정리했습니다.
 
-```text
-C:\Users\<UserName>\AppData\LocalLow\<CompanyName>\<ProductName>\KioskData
-```
+## 기술 스택
 
-## 성능 및 안정화
+| 구분 | 기술 |
+|---|---|
+| Engine | Unity 6000.3.10f1 |
+| Language | C# |
+| UI | Unity uGUI |
+| Serialization | Newtonsoft Json 3.2.2 |
+| 데이터·출력 | TXT, JSON, CSV 저장 / PNG 출력 |
+| Target | Windows Intel 64-bit |
 
-- 페이지 이동과 단순 클릭 로그를 제거하고 실제 데이터가 변경된 경우만 기록
-- 로그 UI 표시 수 제한
-- 메모리 로그 및 JSON 저장 로그 수 제한
-- 새 로그 1건만 UI 상단에 추가하는 방식 적용
-- `TimeDisplay`를 매 프레임이 아닌 1초 단위로 갱신
-- 영수증 PNG 저장 후 임시 Texture 메모리 해제
-- 반복되는 주문·알람·로그 Row UI를 Prefab으로 생성
-- `Application.persistentDataPath`를 사용해 실행 위치와 무관한 저장 경로 확보
+## 실행 환경
 
-## 테스트 결과
-
-| 구분 | 테스트 항목 | 결과 |
-|---|---|---|
-| Navigation | Home / Detail 페이지 전환 | PASS |
-| Order | 주문 추가 / 수정 / 삭제 | PASS |
-| Order | 주문번호 자동 생성 / 중복 방지 | PASS |
-| Storage | 주문 데이터 `orders.txt` 저장 | PASS |
-| Storage | 개별 주문서 TXT 저장 | PASS |
-| Receipt | 영수증 PNG 저장 | PASS |
-| Status | READY / RUNNING / ERROR 상태 변경 | PASS |
-| Alarm | 생성 / 목록 / 상세 조회 / 전체 삭제 | PASS |
-| Log | 카테고리 필터 | PASS |
-| Log | JSON 저장 | PASS |
-| Log | CSV Export | PASS |
-| Persistence | 앱 재실행 후 주문 복원 | PASS |
-| Dashboard | 주문 / 상태 / 알람 / 로그 요약 | PASS |
-| Build | Windows Intel 64-bit 빌드 | PASS |
+- Unity Editor: `6000.3.10f1`
+- Build Target: Windows Intel 64-bit
+- Main Scene: `Assets/Kiosk/Scenes/Kiosk_Industrial.unity`
+- Development Build: Off
+- Script Debugging: Off
 
 ## 실행 방법
 
-1. Unity에서 `Assets/Kiosk/Scenes/Kiosk_Industrial` Scene을 엽니다.
-2. Console Error가 없는지 확인합니다.
-3. `File > Build Profiles > Windows`에서 `Intel 64-bit`로 빌드합니다.
-4. 생성된 `Industrial Kiosk System.exe`를 실행합니다.
+1. Unity Hub에서 저장소 폴더를 엽니다.
+2. `Assets/Kiosk/Scenes/Kiosk_Industrial.unity` Scene을 엽니다.
+3. Console Error가 없는지 확인한 뒤 Play Mode에서 기능을 확인합니다.
+4. Windows 실행 파일은 `File > Build Profiles > Windows`에서 `Intel 64-bit`로 빌드합니다.
+5. 생성된 실행 파일을 실행하고 저장·복원 동작을 확인합니다.
 
-## 프로젝트 폴더 구조
+## 검증 결과
+
+| 검증 항목 | 결과 | 확인 내용 |
+|---|---|---|
+| 화면 전환 | PASS | Home과 각 Detail 화면 이동 및 복귀 |
+| 주문 CRUD | PASS | 추가·수정·선택 삭제·마지막 주문 삭제 |
+| 입력 검증 | PASS | 제품명·수량·날짜 및 주문번호 중복 검사 |
+| TXT 저장 | PASS | Master 주문 목록과 개별 주문서 생성 |
+| 영수증 PNG | PASS | 선택 주문 데이터 반영 및 파일 생성 |
+| 상태 관리 | PASS | READY·RUNNING·ERROR 변경 및 공통 UI 반영 |
+| 테스트 알람 | PASS | 생성·선택·상세 조회·전체 삭제 |
+| 로그 관리 | PASS | 카테고리 필터, JSON 저장, CSV Export |
+| 데이터 복원 | PASS | 프로그램 재실행 후 주문 목록 복원 |
+| Windows Build | PASS | Intel 64-bit Standalone 실행 확인 |
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/validation/윈도우-빌드-실행.png" alt="Windows 빌드 실행"></td>
+    <td width="50%"><img src="docs/images/validation/주문-등록-검증.png" alt="주문 등록 검증"></td>
+  </tr>
+  <tr>
+    <td align="center">Windows Standalone 실행</td>
+    <td align="center">주문 등록 검증</td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/images/validation/영수증-PNG-저장.png" alt="영수증 PNG 저장"></td>
+    <td width="50%"><img src="docs/images/validation/데이터-파일-저장.png" alt="데이터 파일 저장"></td>
+  </tr>
+  <tr>
+    <td align="center">영수증 PNG 저장</td>
+    <td align="center">로컬 데이터 파일 생성</td>
+  </tr>
+</table>
+
+세부 테스트 항목은 [검증 결과](docs/05-validation.md)에 정리했습니다.
+
+## 프로젝트 구조
 
 ```text
 Assets/Kiosk
 ├─ Docs
 ├─ Prefab
 │  ├─ Background
-│  ├─ Buttons
-│  ├─ Card
+│  ├─ Canvas_Main
 │  ├─ Common
-│  ├─ Panels
-│  └─ Txt
+│  ├─ MainFrame
+│  ├─ Main_UI
+│  ├─ Page
+│  └─ UI_Root
 ├─ Scenes
-│  └─ Kiosk_Industrial
+│  └─ Kiosk_Industrial.unity
 └─ Scripts
    ├─ Data
    ├─ Pages
    └─ UI
 ```
 
-## 기술 포인트
+주요 클래스와 Prefab 구성은 [프로젝트 구조](docs/07-project-structure.md)에서 확인할 수 있습니다.
 
-- Unity / C# 기반 Windows 데스크톱 애플리케이션
-- Page Router 기반 화면 전환 구조
-- UI / 데이터 / 파일 저장 책임 분리
-- `Application.persistentDataPath` 기반 데이터 영속성
-- 입력 검증, 주문번호 자동 생성 및 중복 방지
-- Prefab 기반 동적 Row 리스트 UI
-- TXT / JSON / CSV / PNG 복합 파일 출력
-- 표시·메모리·저장 수를 제한한 로그 보관 정책
-- Windows Intel 64-bit 환경의 실제 저장 및 재실행 테스트
+## Known Issues
+
+- 알람 화면은 외부 설비나 센서 연동이 아닌 테스트 알람 생성 방식입니다.
+- 주문과 로그는 로컬 파일에 저장되며 서버·데이터베이스 동기화는 포함하지 않습니다.
+- 현재 로그 정책은 화면 15건, 메모리 및 저장 파일 30건을 유지하도록 제한되어 있습니다.
+- 대량 주문과 장시간 운영 환경의 부하 테스트는 수행하지 않았습니다.
+
+자세한 범위와 개선 방향은 [Known Issues](docs/06-known-issues.md)에 정리했습니다.
 
 ## 상세 문서
 
-- [01. 프로젝트 개요](docs/01-project-overview.md)
-- [02. 시스템 아키텍처](docs/02-architecture.md)
-- [03. 기능 설명](docs/03-features.md)
-- [04. 데이터 및 저장 구조](docs/04-data-and-storage.md)
-- [05. 최종 테스트 결과](docs/05-test-report.md)
-- [06. 프로젝트 구조](docs/06-project-structure.md)
-- [07. 개발 이력](docs/07-development-history.md)
-- [08. 포트폴리오 설명](docs/08-portfolio.md)
+| 문서 | 내용 |
+|---|---|
+| [Documentation](docs/README.md) | 상세 문서 전체 목차 |
+| [01. Overview](docs/01-overview.md) | 개발 목적과 구현 범위 |
+| [02. Architecture](docs/02-architecture.md) | 시스템 계층과 주요 컴포넌트 |
+| [03. Features](docs/03-features.md) | 화면별 기능과 동작 |
+| [04. Data Flow](docs/04-data-flow.md) | 데이터 처리와 파일 저장 구조 |
+| [05. Validation](docs/05-validation.md) | 테스트 환경과 검증 결과 |
+| [06. Known Issues](docs/06-known-issues.md) | 현재 범위와 개선 방향 |
+| [07. Project Structure](docs/07-project-structure.md) | 폴더·Prefab·스크립트 구성 |
 
-## 포트폴리오 및 면접 설명
+## 외부 리소스 및 라이선스
 
-### 포트폴리오 한 줄 소개
-
-> Unity 기반 산업용 키오스크 시스템을 설계하고, 주문·상태·알람·로그 기능과 파일 기반 데이터 영속성, 영수증 이미지 출력을 구현한 프로젝트입니다.
-
-### 면접 설명
-
-이 프로젝트는 단순한 UI 시안이 아니라 데이터를 저장하고 다시 불러오는 산업용 키오스크 흐름을 구현한 프로젝트입니다. 주문 관리, 상태 변경, 알람, 시스템 로그를 하나의 화면에 통합하고 UI와 데이터 저장 책임을 분리했습니다. 또한 의미 있는 데이터 변경만 로그로 기록하고 표시·메모리·저장 수를 제한해 로그 누적에 따른 부담을 줄였으며, Windows Intel 64-bit 빌드에서 저장과 재실행 복원까지 검증했습니다.
+이 저장소는 포트폴리오 검토를 목적으로 공개합니다. Unity, Newtonsoft Json과 외부 리소스의 권리는 각 제작자 및 배포처의 라이선스를 따릅니다. 프로젝트 코드와 문서에는 별도의 오픈소스 라이선스를 부여하지 않았습니다.
