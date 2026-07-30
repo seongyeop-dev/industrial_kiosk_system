@@ -14,19 +14,19 @@
 | 구현 범위 | UI 설계, 주문·상태·알람·로그 기능, 로컬 파일 저장, Windows 빌드 |
 | 개발 환경 | Unity 6000.3.10f1, C# |
 | 실행 환경 | Windows Intel 64-bit |
-| 프로젝트 상태 | 주요 기능 구현 및 Windows Standalone 검증 완료 |
+| 프로젝트 상태 | 주요 기능 구현 및 Windows 독립 실행형 빌드 검증 완료 |
 
 ## 프로젝트 개요
 
-산업 현장에서 주문, 시스템 상태, 알람과 작업 로그를 하나의 화면에서 관리하는 흐름을 구현한 Unity 기반 키오스크입니다. Home과 Dashboard에서 주요 정보를 요약하고, 각 Detail 화면에서 주문 CRUD, 상태 변경, 테스트 알람과 로그 조회를 처리합니다.
+산업 현장에서 주문, 시스템 상태, 알람과 작업 로그를 하나의 화면에서 관리하는 흐름을 구현한 Unity 기반 키오스크입니다. Home과 Dashboard에서 주요 정보를 요약하고, 각 Detail 화면에서 주문 생성·조회·수정·삭제, 상태 변경, 테스트 알람과 로그 조회를 처리합니다.
 
-주문과 로그는 `Application.persistentDataPath` 아래에 TXT·JSON·CSV 형식으로 저장하며, 선택한 주문은 영수증 UI를 PNG로 출력합니다. Windows Standalone 환경에서 데이터 저장과 재실행 후 주문 복원까지 확인했습니다.
+주문과 로그는 `Application.persistentDataPath` 아래에 TXT·JSON·CSV 형식으로 저장하며, 선택한 주문은 영수증 UI를 PNG로 출력합니다. Windows 독립 실행형 빌드 환경에서 데이터 저장과 재실행 후 주문 복원까지 확인했습니다.
 
 ## 데모
 
 ### 산업용 키오스크 전체 기능 시연
 
-Windows Standalone 환경에서 주문 등록·수정·삭제, 시스템 상태 변경, 테스트 알람, 로그 조회, TXT·JSON·CSV 데이터 저장, 영수증 PNG 출력과 재실행 후 주문 데이터 복원 흐름을 확인할 수 있습니다.
+Windows 독립 실행형 빌드 환경에서 주문 등록·수정·삭제, 시스템 상태 변경, 테스트 알람, 로그 조회, TXT·JSON·CSV 데이터 저장, 영수증 PNG 출력과 재실행 후 주문 데이터 복원 흐름을 확인할 수 있습니다.
 
 https://github.com/user-attachments/assets/6395205a-398a-4b4d-800e-a7682d0c1225
 
@@ -157,7 +157,7 @@ flowchart LR
 | 검증 항목 | 결과 | 확인 내용 |
 |---|---|---|
 | 화면 전환 | PASS | Home과 각 Detail 화면 이동 및 복귀 |
-| 주문 CRUD | PASS | 추가·수정·선택 삭제·마지막 주문 삭제 |
+| 주문 생성·조회·수정·삭제 | PASS | 추가·수정·선택 삭제·마지막 주문 삭제 |
 | 입력 검증 | PASS | 제품명·수량·날짜 및 주문번호 중복 검사 |
 | TXT 저장 | PASS | Master 주문 목록과 개별 주문서 생성 |
 | 영수증 PNG | PASS | 선택 주문 데이터 반영 및 파일 생성 |
@@ -173,7 +173,7 @@ flowchart LR
     <td width="50%"><img src="docs/images/validation/주문-등록-검증.png" alt="주문 등록 검증"></td>
   </tr>
   <tr>
-    <td align="center">Windows Standalone 실행</td>
+    <td align="center">Windows 독립 실행형 빌드 검증</td>
     <td align="center">주문 등록 검증</td>
   </tr>
   <tr>
@@ -211,15 +211,11 @@ Assets/Kiosk
 
 주요 클래스와 Prefab 구성은 [프로젝트 구조](docs/07-project-structure.md)에서 확인할 수 있습니다.
 
-## Known Issues
+## 문제 해결 및 최종 구현 범위
 
-- 알람 화면은 외부 설비나 센서 연동이 아닌 테스트 알람 생성 방식입니다.
-- 주문과 로그는 로컬 파일에 저장되며 서버·데이터베이스 동기화는 포함하지 않습니다.
-- 현재 로그 정책은 화면 15건, 메모리 및 저장 파일 30건을 유지하도록 제한되어 있습니다.
-- 대량 주문과 장시간 운영 환경의 부하 테스트는 수행하지 않았습니다.
+주문번호 중복, 잘못된 입력값 저장, 실행 종료 후 데이터 복원과 빌드 환경의 파일 경로 차이를 처리했습니다. 최종적으로 주문 생성·조회·수정·삭제, TXT 저장·복원, 영수증 PNG 생성, JSON 로그와 CSV 내보내기 기능을 Windows 독립 실행형 빌드에서 확인했습니다.
 
-자세한 범위와 개선 방향은 [Known Issues](docs/06-known-issues.md)에 정리했습니다.
-
+자세한 내용은 [문제 해결 및 최종 구현 범위](docs/06-project-scope.md)에서 확인할 수 있습니다.
 ## 상세 문서
 
 | 문서 | 내용 |
@@ -230,7 +226,7 @@ Assets/Kiosk
 | [03. Features](docs/03-features.md) | 화면별 기능과 동작 |
 | [04. Data Flow](docs/04-data-flow.md) | 데이터 처리와 파일 저장 구조 |
 | [05. Validation](docs/05-validation.md) | 테스트 환경과 검증 결과 |
-| [06. Known Issues](docs/06-known-issues.md) | 현재 범위와 개선 방향 |
+| [06. 문제 해결 및 최종 구현 범위](docs/06-project-scope.md) | 현재 범위와 개선 방향 |
 | [07. Project Structure](docs/07-project-structure.md) | 폴더·Prefab·스크립트 구성 |
 
 ## 외부 리소스 및 라이선스

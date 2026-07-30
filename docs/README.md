@@ -9,7 +9,7 @@ Industrial Kiosk System의 설계, 기능, 데이터 처리와 검증 내용을 
 | [03. Features](03-features.md) | Home·Dashboard·Order·Status·Alarm·Log 기능 |
 | [04. Data Flow](04-data-flow.md) | 주문·로그 처리와 로컬 파일 저장 구조 |
 | [05. Validation](05-validation.md) | 테스트 환경, 기능 검증과 Windows 빌드 결과 |
-| [06. Known Issues](06-known-issues.md) | 현재 구현 범위와 개선 가능한 항목 |
+| [06. 문제 해결 및 최종 구현 범위](06-project-scope.md) | 주요 문제 해결과 최종 구현 범위 |
 | [07. Project Structure](07-project-structure.md) | 실제 폴더, Prefab과 주요 스크립트 역할 |
 
 [프로젝트 README로 돌아가기](../README.md)
