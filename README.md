@@ -3,13 +3,13 @@
 > Unity 기반 주문·상태·알람·로그 통합 관리 키오스크
 
 <p align="center">
-  <img src="docs/images/overview/대표-대시보드.png" alt="산업용 키오스크 대표 대시보드" width="100%">
+  <img src="docs/images/overview/대표_대시보드.png" alt="산업용 키오스크 대표 대시보드" width="100%">
 </p>
 
 ## 프로젝트 정보
 
 | 항목 | 내용 |
-|---|---|
+|:---|:---|
 | 개발 형태 | 교육 과정 기반 개인 프로젝트 |
 | 구현 범위 | UI 설계, 주문·상태·알람·로그 기능, 로컬 파일 저장, Windows 빌드 |
 | 개발 환경 | Unity 6000.3.10f1, C# |
@@ -38,8 +38,8 @@ https://github.com/user-attachments/assets/6395205a-398a-4b4d-800e-a7682d0c1225
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/images/features/홈-화면.png" alt="홈 화면"></td>
-    <td width="50%"><img src="docs/images/overview/대표-대시보드.png" alt="대표 대시보드"></td>
+    <td width="50%" align="center"><img src="docs/images/features/홈_화면.png" alt="홈 화면" width="100%"></td>
+    <td width="50%" align="center"><img src="docs/images/overview/대표_대시보드.png" alt="대표 대시보드" width="100%"></td>
   </tr>
   <tr>
     <td align="center">Home</td>
@@ -53,8 +53,8 @@ https://github.com/user-attachments/assets/6395205a-398a-4b4d-800e-a7682d0c1225
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/images/features/주문-관리.png" alt="주문 관리"></td>
-    <td width="50%"><img src="docs/images/features/영수증-PNG-출력.png" alt="영수증 PNG 출력"></td>
+    <td width="50%" align="center"><img src="docs/images/features/주문_관리.png" alt="주문 관리" width="100%"></td>
+    <td width="50%" align="center"><img src="docs/images/features/영수증_PNG_출력.png" alt="영수증 PNG 출력" width="100%"></td>
   </tr>
   <tr>
     <td align="center">주문 관리</td>
@@ -68,8 +68,8 @@ https://github.com/user-attachments/assets/6395205a-398a-4b4d-800e-a7682d0c1225
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/images/features/시스템-상태-관리.png" alt="시스템 상태 관리"></td>
-    <td width="50%"><img src="docs/images/features/테스트-알람-관리.png" alt="테스트 알람 관리"></td>
+    <td width="50%" align="center"><img src="docs/images/features/시스템_상태_관리.png" alt="시스템 상태 관리" width="100%"></td>
+    <td width="50%" align="center"><img src="docs/images/features/테스트_알람_관리.png" alt="테스트 알람 관리" width="100%"></td>
   </tr>
   <tr>
     <td align="center">시스템 상태 관리</td>
@@ -82,7 +82,7 @@ https://github.com/user-attachments/assets/6395205a-398a-4b4d-800e-a7682d0c1225
 주문·상태·알람 변경 이력을 최신순으로 표시하고 카테고리별로 필터링합니다. 로그는 JSON으로 저장하며 필요할 때 CSV 파일로 내보냅니다.
 
 <p align="center">
-  <img src="docs/images/features/시스템-로그-관리.png" alt="시스템 로그 관리" width="95%">
+  <img src="docs/images/features/시스템_로그_관리.png" alt="시스템 로그 관리" width="90%">
 </p>
 
 ## 시스템 구성
@@ -105,7 +105,7 @@ flowchart LR
 - Data/File Layer: TXT·JSON·CSV 저장과 재실행 복원
 - UI Components: 주문·알람·로그 Row와 공통 상태 표시
 
-자세한 구성은 [시스템 아키텍처](docs/02-architecture.md)에서 확인할 수 있습니다.
+자세한 구성은 [시스템 아키텍처](docs/02_architecture.md)에서 확인할 수 있습니다.
 
 ## 데이터 흐름
 
@@ -123,12 +123,12 @@ flowchart LR
     D --> K[Home / Dashboard 갱신]
 ```
 
-런타임 데이터는 `Application.persistentDataPath/KioskData` 아래에 저장됩니다. 자세한 저장 구조와 처리 순서는 [데이터 흐름](docs/04-data-flow.md)에 정리했습니다.
+런타임 데이터는 `Application.persistentDataPath/KioskData` 아래에 저장됩니다. 자세한 저장 구조와 처리 순서는 [데이터 흐름](docs/04_data_flow.md)에 정리했습니다.
 
 ## 기술 스택
 
 | 구분 | 기술 |
-|---|---|
+|:---|:---|
 | Engine | Unity 6000.3.10f1 |
 | Language | C# |
 | UI | Unity uGUI |
@@ -155,7 +155,7 @@ flowchart LR
 ## 검증 결과
 
 | 검증 항목 | 결과 | 확인 내용 |
-|---|---|---|
+|:---|:---:|:---|
 | 화면 전환 | PASS | Home과 각 Detail 화면 이동 및 복귀 |
 | 주문 생성·조회·수정·삭제 | PASS | 추가·수정·선택 삭제·마지막 주문 삭제 |
 | 입력 검증 | PASS | 제품명·수량·날짜 및 주문번호 중복 검사 |
@@ -169,16 +169,16 @@ flowchart LR
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/images/validation/윈도우-빌드-실행.png" alt="Windows 빌드 실행"></td>
-    <td width="50%"><img src="docs/images/validation/주문-등록-검증.png" alt="주문 등록 검증"></td>
+    <td width="50%" align="center"><img src="docs/images/validation/윈도우_빌드_실행.png" alt="Windows 빌드 실행" width="100%"></td>
+    <td width="50%" align="center"><img src="docs/images/validation/주문_등록_검증.png" alt="주문 등록 검증" width="100%"></td>
   </tr>
   <tr>
     <td align="center">Windows 독립 실행형 빌드 검증</td>
     <td align="center">주문 등록 검증</td>
   </tr>
   <tr>
-    <td width="50%"><img src="docs/images/validation/영수증-PNG-저장.png" alt="영수증 PNG 저장"></td>
-    <td width="50%"><img src="docs/images/validation/데이터-파일-저장.png" alt="데이터 파일 저장"></td>
+    <td width="50%" align="center"><img src="docs/images/validation/영수증_PNG_저장.png" alt="영수증 PNG 저장" width="100%"></td>
+    <td width="50%" align="center"><img src="docs/images/validation/데이터_파일_저장.png" alt="데이터 파일 저장" width="100%"></td>
   </tr>
   <tr>
     <td align="center">영수증 PNG 저장</td>
@@ -186,7 +186,7 @@ flowchart LR
   </tr>
 </table>
 
-세부 테스트 항목은 [검증 결과](docs/05-validation.md)에 정리했습니다.
+세부 테스트 항목은 [검증 결과](docs/05_validation.md)에 정리했습니다.
 
 ## 프로젝트 구조
 
@@ -209,25 +209,26 @@ Assets/Kiosk
    └─ UI
 ```
 
-주요 클래스와 Prefab 구성은 [프로젝트 구조](docs/07-project-structure.md)에서 확인할 수 있습니다.
+주요 클래스와 Prefab 구성은 [프로젝트 구조](docs/07_project_structure.md)에서 확인할 수 있습니다.
 
 ## 문제 해결 및 최종 구현 범위
 
 주문번호 중복, 잘못된 입력값 저장, 실행 종료 후 데이터 복원과 빌드 환경의 파일 경로 차이를 처리했습니다. 최종적으로 주문 생성·조회·수정·삭제, TXT 저장·복원, 영수증 PNG 생성, JSON 로그와 CSV 내보내기 기능을 Windows 독립 실행형 빌드에서 확인했습니다.
 
-자세한 내용은 [문제 해결 및 최종 구현 범위](docs/06-project-scope.md)에서 확인할 수 있습니다.
+자세한 내용은 [문제 해결 및 최종 구현 범위](docs/06_project_scope.md)에서 확인할 수 있습니다.
+
 ## 상세 문서
 
 | 문서 | 내용 |
-|---|---|
+|:---|:---|
 | [Documentation](docs/README.md) | 상세 문서 전체 목차 |
-| [01. Overview](docs/01-overview.md) | 개발 목적과 구현 범위 |
-| [02. Architecture](docs/02-architecture.md) | 시스템 계층과 주요 컴포넌트 |
-| [03. Features](docs/03-features.md) | 화면별 기능과 동작 |
-| [04. Data Flow](docs/04-data-flow.md) | 데이터 처리와 파일 저장 구조 |
-| [05. Validation](docs/05-validation.md) | 테스트 환경과 검증 결과 |
-| [06. 문제 해결 및 최종 구현 범위](docs/06-project-scope.md) | 현재 범위와 개선 방향 |
-| [07. Project Structure](docs/07-project-structure.md) | 폴더·Prefab·스크립트 구성 |
+| [01. Overview](docs/01_overview.md) | 개발 목적과 구현 범위 |
+| [02. Architecture](docs/02_architecture.md) | 시스템 계층과 주요 컴포넌트 |
+| [03. Features](docs/03_features.md) | 화면별 기능과 동작 |
+| [04. Data Flow](docs/04_data_flow.md) | 데이터 처리와 파일 저장 구조 |
+| [05. Validation](docs/05_validation.md) | 테스트 환경과 검증 결과 |
+| [06. Project Scope](docs/06_project_scope.md) | 주요 문제 해결과 최종 구현 범위 |
+| [07. Project Structure](docs/07_project_structure.md) | 폴더·Prefab·스크립트 구성 |
 
 ## 외부 리소스 및 라이선스
 

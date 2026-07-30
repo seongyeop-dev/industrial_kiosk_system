@@ -16,13 +16,13 @@ industrial-kiosk-system
 ├─ ProjectSettings
 ├─ docs
 │  ├─ README.md
-│  ├─ 01-overview.md
-│  ├─ 02-architecture.md
-│  ├─ 03-features.md
-│  ├─ 04-data-flow.md
-│  ├─ 05-validation.md
-│  ├─ 06-project-scope.md
-│  ├─ 07-project-structure.md
+│  ├─ 01_overview.md
+│  ├─ 02_architecture.md
+│  ├─ 03_features.md
+│  ├─ 04_data_flow.md
+│  ├─ 05_validation.md
+│  ├─ 06_project_scope.md
+│  ├─ 07_project_structure.md
 │  └─ images
 └─ README.md
 ```
@@ -52,7 +52,7 @@ Assets/Kiosk
 ## 주요 Prefab
 
 | 폴더 | 주요 Prefab | 역할 |
-|---|---|---|
+|:---|:---|:---|
 | `Background` | `Background.prefab` | 전체 배경 |
 | `Canvas_Main` | `Canvas_Main`, `OrderController`, `PageManager` | Scene 상위 UI와 Controller |
 | `Common` | `PF_OrderRow`, `PF_AlarmRow`, `PF_LogRow`, `PF_Receipt` | 반복 Row와 공통 UI |
@@ -64,7 +64,7 @@ Assets/Kiosk
 ## Data Scripts
 
 | 파일 | 역할 |
-|---|---|
+|:---|:---|
 | `NST_CSV.cs` | Dictionary 목록을 CSV로 저장하거나 불러오는 공통 기능 |
 | `NST_Json.cs` | Newtonsoft Json 기반 JSON 저장·복원 |
 | `scr_LogFileSave.cs` | `KioskData/Logs` 경로와 로그 파일 관리 |
@@ -74,7 +74,7 @@ Assets/Kiosk
 ## Page Scripts
 
 | 파일 | 역할 |
-|---|---|
+|:---|:---|
 | `scr_AlarmController.cs` | 테스트 알람 생성, 선택, 전체 삭제 |
 | `scr_DashboardController.cs` | 주문·상태·알람·로그 요약 표시 |
 | `scr_OrderController.cs` | 주문 데이터, TXT 저장·복원, 검색과 번호 생성 |
@@ -85,7 +85,7 @@ Assets/Kiosk
 ## UI Scripts
 
 | 파일 | 역할 |
-|---|---|
+|:---|:---|
 | `scr_AlarmRowUI.cs` | 알람 Row 표시와 선택 이벤트 |
 | `scr_BottomBarToggle.cs` | Bottom Bar 상태 표시 |
 | `scr_LogRowUI.cs` | 로그 Row 표시 |
@@ -98,8 +98,10 @@ Assets/Kiosk
 ## 주요 패키지
 
 | 패키지 | 버전 | 용도 |
-|---|---:|---|
+|:---|---:|:---|
 | Unity uGUI | 2.0.0 | UI 구성 |
 | Newtonsoft Json | 3.2.2 | 로그 JSON 직렬화 |
 
-[문서 목차로 돌아가기](README.md)
+---
+
+[문서 목차](README.md) · [프로젝트 README](../README.md)

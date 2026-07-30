@@ -16,7 +16,7 @@
 ## 구현 범위
 
 | 구분 | 구현 내용 |
-|---|---|
+|:---|:---|
 | Navigation | Home·Detail 화면 전환, Side Menu와 바로가기 |
 | Order | CRUD, 자동 주문번호, 중복 방지, 입력 검증 |
 | Status | READY·RUNNING·ERROR 상태 변경과 공통 UI 반영 |
@@ -61,4 +61,6 @@
 - Windows 독립 실행형 빌드 환경 실행 확인
 - 프로그램 재실행 후 저장된 주문 복원 확인
 
-[문서 목차로 돌아가기](README.md)
+---
+
+[문서 목차](README.md) · [프로젝트 README](../README.md)

@@ -107,4 +107,6 @@ Assets/Kiosk/Prefab
 - 런타임 저장 경로는 `Application.persistentDataPath`로 통일
 - 페이지 이동이나 단순 선택보다 실제 데이터 변경을 중심으로 로그 기록
 
-[문서 목차로 돌아가기](README.md)
+---
+
+[문서 목차](README.md) · [프로젝트 README](../README.md)

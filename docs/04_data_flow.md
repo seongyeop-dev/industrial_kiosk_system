@@ -88,11 +88,13 @@ flowchart LR
 ## 파일별 역할
 
 | 파일 | 역할 | 생성 시점 |
-|---|---|---|
+|:---|:---|:---|
 | `orders.txt` | 전체 주문 Master 데이터 | 주문 추가·수정·삭제 후 |
 | `OrderSheet_{OrderNo}.txt` | 주문별 상세 정보 | 주문 저장·수정 후 |
 | `Receipt_{OrderNo}.png` | 선택 주문 영수증 | 영수증 출력 시 |
 | `system_log.json` | 최근 시스템 로그 | 로그 추가 후 |
 | `system_log_export_*.csv` | 로그 내보내기 | 사용자가 Export 실행 시 |
 
-[문서 목차로 돌아가기](README.md)
+---
+
+[문서 목차](README.md) · [프로젝트 README](../README.md)

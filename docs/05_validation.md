@@ -3,7 +3,7 @@
 ## 테스트 환경
 
 | 항목 | 내용 |
-|---|---|
+|:---|:---|
 | Unity | 6000.3.10f1 |
 | Platform | Windows |
 | Architecture | Intel 64-bit |
@@ -14,7 +14,7 @@
 ## 기능 검증
 
 | 영역 | 검증 항목 | 결과 |
-|---|---|---|
+|:---|:---|:---:|
 | Navigation | Home에서 각 Detail 화면 이동 | PASS |
 | Navigation | Detail 화면에서 Home 복귀 | PASS |
 | Order | 주문 추가·수정·선택 삭제 | PASS |
@@ -39,25 +39,33 @@
 
 Unity Editor가 아닌 Windows 실행 파일에서 주요 UI와 기능을 확인했습니다.
 
-![Windows 빌드 실행](images/validation/윈도우-빌드-실행.png)
+<p align="center">
+  <img src="images/validation/윈도우_빌드_실행.png" alt="Windows 독립 실행형 빌드 검증" width="90%">
+</p>
 
 ### 주문 등록
 
 주문 입력 후 목록과 관련 요약 정보가 갱신되는지 확인했습니다.
 
-![주문 등록 검증](images/validation/주문-등록-검증.png)
+<p align="center">
+  <img src="images/validation/주문_등록_검증.png" alt="주문 등록 검증" width="90%">
+</p>
 
 ### 영수증 PNG 저장
 
 선택한 주문 데이터가 영수증 UI에 반영되고 PNG 파일로 생성되는지 확인했습니다.
 
-![영수증 PNG 저장](images/validation/영수증-PNG-저장.png)
+<p align="center">
+  <img src="images/validation/영수증_PNG_저장.png" alt="영수증 PNG 저장" width="90%">
+</p>
 
 ### 로컬 데이터 파일 생성
 
 주문 TXT, 로그 JSON·CSV와 영수증 PNG가 `KioskData` 하위 폴더에 생성되는지 확인했습니다.
 
-![데이터 파일 저장](images/validation/데이터-파일-저장.png)
+<p align="center">
+  <img src="images/validation/데이터_파일_저장.png" alt="로컬 데이터 파일 생성" width="90%">
+</p>
 
 ## 빌드 오류 수정
 
@@ -73,4 +81,6 @@ using System.IO;
 
 Windows 독립 실행형 빌드에서 포트폴리오 규모의 주문 데이터를 기준으로 주요 UI, 주문 저장·복원, 영수증 생성과 내보내기 기능을 검증했습니다.
 
-[문서 목차로 돌아가기](README.md)
+---
+
+[문서 목차](README.md) · [프로젝트 README](../README.md)
