@@ -11,7 +11,7 @@
 - 시스템 상태와 테스트 알람 관리
 - 주문·상태·알람 변경 이력 기록
 - TXT·JSON·CSV·PNG 파일 출력
-- Windows Standalone 실행과 데이터 복원 검증
+- Windows 독립 실행형 빌드 검증과 데이터 복원 검증
 
 ## 구현 범위
 
@@ -58,7 +58,7 @@
 
 - 주문·상태·테스트 알람·로그 화면 연동 완료
 - TXT·JSON·CSV·PNG 파일 생성 확인
-- Windows Standalone 환경 실행 확인
+- Windows 독립 실행형 빌드 환경 실행 확인
 - 프로그램 재실행 후 저장된 주문 복원 확인
 
 [문서 목차로 돌아가기](README.md)
